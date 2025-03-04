@@ -104,6 +104,7 @@ accessoryCategory.forEach(item => {
 
         createAccessory(categoryList[key], key)
         getButtons()
+        
     })
 })
 
@@ -463,20 +464,14 @@ function getButtons() {
         btn.addEventListener("click", function () {
             const btnParent = btn.closest(".product_item")
             createCartItem(btnParent)
+           showMessage()
+
         })
     })
 }
 
 
-const addToCartButtons = [...document.querySelectorAll(".addToCard_button")]
-addToCartButtons.forEach(btn => {
-    btn.addEventListener("click", function () {
-        const btnParent = btn.closest(".product_item")
-        createCartItem(btnParent)
 
-        showMessage()
-    })
-})
 
 // 
 function showMessage() {
@@ -586,6 +581,8 @@ function delteItem(item) {
     })
 }
 // --> cart
+
+window.onload = () => getButtons() 
 
 
 
