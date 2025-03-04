@@ -119,15 +119,17 @@
 
 }
 
-.nav_close {
+#burger_line1.active{
     position: absolute;
-    right: 0;
-    top: 0;
-    padding: 10px;
-    border: 1px solid;
-    display: none;
-    font-size: 34px;
-    color: var(--colorlight);
+    transform: rotate(45deg);
+}
+#burger_line2.active{
+    position: absolute;
+    transform: scale(0);
+}
+#burger_line3.active{
+    position: absolute;
+    transform: rotate(-45deg);
 }
 
 /* /////////////////////////// */
@@ -135,6 +137,7 @@
     width: 90%;
     height: 3px;
     background-color: var(--colordark);
+    transition: .3s;
 }
 
 .header_icons {

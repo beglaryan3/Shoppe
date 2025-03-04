@@ -8,17 +8,20 @@
       visibility: hidden;
       position: absolute;
       right: 0;
-      top: 0;
-      margin-top: 100px;
-      width: 30%;
-      height: 80vh;
+      top: 100px;
+      transform: translateX(100%);
+      /* margin-top: 100px; */
+      width: 200px;
+      height: calc(100vh - 100px);
       background-color: #b3a38c;
-      z-index: 99;
+      z-index: 9999;
+      transition: 1s;
 
    }
 
    .nav.nav_active {
       visibility: visible;
+      transform: translateX(0);
    }
 
    .nav_list {
@@ -58,6 +61,9 @@
 @media (max-width:725px) {
    .product_item {
       align-items: center;
+   }
+   .cart_container{
+      width: 100%;
    }
 }
 

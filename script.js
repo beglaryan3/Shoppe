@@ -1,14 +1,17 @@
 // <-- burgerMenu
 const nav = document.querySelector(".nav")
 const menu = document.querySelector(".burger_menu")
-const closeMenu = document.querySelector(".nav_close")
+const line1 = document.getElementById("burger_line1")
+const line2 = document.getElementById("burger_line2")
+const line3 = document.getElementById("burger_line3")
 menu.addEventListener("click", function () {
     nav.classList.toggle("nav_active")
+    line1.classList.toggle("active")
+    line2.classList.toggle("active")
+    line3.classList.toggle("active")
 
 })
-closeMenu.onclick = () => {
-    nav.classList.remove("nav_active")
-}
+
 // -->burgerMenu
 
 
