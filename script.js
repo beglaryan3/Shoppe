@@ -24,6 +24,9 @@ const swiper = new Swiper(".mySwiper", {
     },
     loop: true,
     spaceBetween: 20,
+    autoplay: {
+        delay: 3000,
+    },
 });
 // --> slider
 
@@ -107,7 +110,7 @@ accessoryCategory.forEach(item => {
 
         createAccessory(categoryList[key], key)
         getButtons()
-        
+
     })
 })
 
@@ -467,8 +470,7 @@ function getButtons() {
         btn.addEventListener("click", function () {
             const btnParent = btn.closest(".product_item")
             createCartItem(btnParent)
-           showMessage()
-
+            showMessage()
         })
     })
 }
@@ -493,9 +495,25 @@ function createCartItem(parentElement) {
     const imageSrc = parentElement.querySelector(".product_image").src
     const price = parentElement.querySelector(".product_price").textContent
 
-    const cartItem = document.createElement("li")
-    cartItem.className = "cart_item"
-    cartItem.innerHTML = `
+    const itemNames = [...cartList.children].map(item => {
+        const newName = item.querySelector(".cartItem_name").textContent
+        return newName
+    })
+    if (itemNames.includes(name)) {
+        const items = [...cartList.querySelectorAll(".cart_item")].find(item => {
+            return item.querySelector(".cartItem_name").textContent === name
+        })
+        let oldCuantity = items.querySelector(".cuantity")
+        oldCuantity.textContent = Number(oldCuantity.textContent) + 1
+        updateTotalPrice(price, 1)
+
+        return
+    } else {
+
+
+        const cartItem = document.createElement("li")
+        cartItem.className = "cart_item"
+        cartItem.innerHTML = `
     <img src="${imageSrc}" alt="" class="cart_image">
     <div class="cartItem_info">
         <div>
@@ -514,14 +532,14 @@ function createCartItem(parentElement) {
     </button>
     
     `
-    cartList.append(cartItem)
-    let listChildren = cartList.children.length
-    totalItems.textContent = `${listChildren} Items`
-    cartIconeCuantity.textContent = listChildren
-    updateTotalPrice(price, 1)
-    delteItem(cartItem)
-    updateCuantity(cartItem)
-
+        cartList.append(cartItem)
+        let listChildren = cartList.children.length
+        totalItems.textContent = `${listChildren} Items`
+        cartIconeCuantity.textContent = listChildren
+        updateTotalPrice(price, 1)
+        delteItem(cartItem)
+        updateCuantity(cartItem)
+    }
 }
 
 
@@ -585,7 +603,7 @@ function delteItem(item) {
 }
 // --> cart
 
-window.onload = () => getButtons() 
+window.onload = () => getButtons()
 
 
 
