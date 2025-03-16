@@ -56,6 +56,9 @@
    .nav_close {
       display: block;
    }
+   .productInfo{
+      flex-wrap: wrap;
+   }
 }
 
 @media (max-width:725px) {
