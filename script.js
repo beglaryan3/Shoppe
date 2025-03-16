@@ -110,6 +110,7 @@ accessoryCategory.forEach(item => {
 
         createAccessory(categoryList[key], key)
         getButtons()
+        itemsInfo()
 
     })
 })
@@ -509,8 +510,6 @@ function createCartItem(parentElement) {
 
         return
     } else {
-
-
         const cartItem = document.createElement("li")
         cartItem.className = "cart_item"
         cartItem.innerHTML = `
@@ -605,11 +604,47 @@ function delteItem(item) {
 
 window.onload = () => getButtons()
 
+function itemsInfo(){
+    const allItems = document.querySelectorAll(".product_item")
+    allItems.forEach(item =>{
+        item.addEventListener('click',function(e){
+            if(e.target.classList.contains("addToCard_button")){
+                return
+            }
+            const newImage = item.querySelector(".product_image").src
+            const productInfo = document.createElement("div")
+            productInfo.classList.add("productInfo","container",)
+            document.body.appendChild(productInfo)
 
+            const productImageBox = document.createElement("div")
+            productInfo.append(productImageBox)
+            productImageBox.classList.add("productImageBox")
 
+            const productInfoImage = document.createElement("img")
+            productImageBox.append(productInfoImage)
+            productInfoImage.src = newImage
+            productInfoImage.classList.add("productInfoImage")
 
+            const productInfoBox = document.createElement("div")
+            productInfo.append(productInfoBox)
+            productInfoBox.classList.add("productInfoBox")
+            
+            const modalCloseBtn = document.createElement("span")
+            modalCloseBtn.classList.add("modalCloseBtn")
+            productInfo.append(modalCloseBtn)
+            modalCloseBtn.innerHTML = `<i class="fa fa-times" aria-hidden="true"></i>`
 
+            modalCloseBtn.onclick = () =>{ productInfo.classList.add("hidden")}
+            document.addEventListener("click",function(e){
+                if(!e.target.classList.contains("productInfo") && !e.target.closest(".product_item")){
+                    productInfo.classList.add("hidden")
+                }
+                console.log(e.target);
+                
+            })
+        })
 
+    })
 
-
-
+}
+itemsInfo()

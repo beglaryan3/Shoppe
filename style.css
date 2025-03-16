@@ -441,3 +441,47 @@ user-select: none;
     opacity: 1;
     transition: .5s;
 }
+
+
+.productInfo{
+    height: calc(100vh - 100px);
+    background: var(---goldcolor);
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.productImageBox{
+    width: 540px;
+    height:600px;
+    background: white;
+}
+.productInfoImage{
+    width: 100%;
+    height: 100%;
+}
+
+.productInfoBox{
+    height:600px;
+    width: 486px;
+    background: var(--colorlight);
+}
+.hidden{
+    transition: .5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.modalCloseBtn{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: var(--colorlight);
+    font-size: 25px;
+    cursor: pointer;
+}
