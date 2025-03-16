@@ -638,10 +638,12 @@ function itemsInfo(){
             document.addEventListener("click",function(e){
                 if(!e.target.classList.contains("productInfo") && !e.target.closest(".product_item")){
                     productInfo.classList.add("hidden")
+            document.body.style.overflow = "visible"
+
                 }
-                console.log(e.target);
                 
             })
+            document.body.style.overflow = "hidden"
         })
 
     })

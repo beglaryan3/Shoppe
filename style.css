@@ -455,11 +455,13 @@ user-select: none;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    padding: 20px;
+    
 }
 
 .productImageBox{
     width: 540px;
-    height:600px;
+    height:100%;
     background: white;
 }
 .productInfoImage{
@@ -468,7 +470,7 @@ user-select: none;
 }
 
 .productInfoBox{
-    height:600px;
+    height:100%;
     width: 486px;
     background: var(--colorlight);
 }
